@@ -2,12 +2,14 @@ import { convertToSharp } from './convertToSharp';
 import { permutations } from './utils';
 
 // prettier-ignore
-const validNotes = [
+export const validNotes = [
   'C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#',
   'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B',
-];
+] as const;
 
-const isValid = (note: string) => validNotes.indexOf(note) >= 0;
+export type NoteType = typeof validNotes[number];
+
+const isValid = (note: string) => validNotes.indexOf(note as NoteType) >= 0;
 
 // prettier-ignore
 const SHARP_NOTES_ONLY = [
