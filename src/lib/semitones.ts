@@ -1,5 +1,5 @@
 import { convertToSharp } from './convertToSharp';
-import { permutations } from './utils';
+import { permutations, wrapAround } from './utils';
 
 // prettier-ignore
 export const validNotes = [
@@ -12,7 +12,7 @@ export type NoteType = typeof validNotes[number];
 const isValid = (note: string) => validNotes.indexOf(note as NoteType) >= 0;
 
 // prettier-ignore
-const SHARP_NOTES_ONLY = [
+export const SHARP_NOTES_ONLY = [
   'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B',
 ];
 
@@ -49,4 +49,15 @@ export const notesToPotentialSemitones = (rawNotes: string | string[]) => {
   const notes = convertToSharp(rawNotes);
 
   return permutations<string>(notes).map(notesToIntervals);
+};
+
+export const chromaticScale = (note: NoteType) => {
+  const scale = wrapAround(
+    SHARP_NOTES_ONLY,
+    SHARP_NOTES_ONLY.indexOf(note as string)
+  ) as NoteType[];
+
+  scale.push(note);
+
+  return scale;
 };

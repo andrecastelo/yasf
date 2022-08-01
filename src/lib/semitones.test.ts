@@ -3,6 +3,8 @@ import {
   notesToSemitones,
   semitonesToIntervals,
   notesToPotentialSemitones,
+  NoteType,
+  chromaticScale,
 } from './semitones';
 
 test('lib/notesToSemitones', () => {
@@ -33,4 +35,20 @@ test('lib/notesToPotentialIntervals', () => {
     '1P 2M 3M 5P 6M',
     '1P 2M 4P 5P 7m',
   ]);
+});
+
+test('lib/chromaticScale', () => {
+  const guitarStrings: NoteType[][] = [
+    ['E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E'],
+    ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A'],
+    ['D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D'],
+    ['G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G'],
+    ['B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
+  ];
+
+  expect(chromaticScale('E')).toEqual(guitarStrings[0]);
+  expect(chromaticScale('A')).toEqual(guitarStrings[1]);
+  expect(chromaticScale('D')).toEqual(guitarStrings[2]);
+  expect(chromaticScale('G')).toEqual(guitarStrings[3]);
+  expect(chromaticScale('B')).toEqual(guitarStrings[4]);
 });
