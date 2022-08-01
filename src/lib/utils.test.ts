@@ -1,5 +1,5 @@
 import { test, expect, assert, describe } from 'vitest';
-import { permutations } from './utils';
+import { permutations, wrapAround } from './utils';
 
 test('lib/utils/permutations', () => {
   expect(permutations([0, 1])).toEqual([
@@ -14,4 +14,11 @@ test('lib/utils/permutations', () => {
     'bca'.split(''),
     'cab'.split(''),
   ]);
+});
+
+test('lib/utils/wrapAround', () => {
+  const notes = 'cdefgab'.toUpperCase().split('');
+
+  expect(wrapAround(notes, 3)).toEqual(['F', 'G', 'A', 'B', 'C', 'D', 'E']);
+  expect(wrapAround(notes, 3).length).toEqual(notes.length);
 });

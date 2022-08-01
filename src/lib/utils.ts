@@ -9,3 +9,9 @@ export const permutations = <T>(array: T[]): T[][] => {
 
   return result;
 };
+
+export const wrapAround = <T>(array: T[], index: number) => {
+  const slice = array.slice(index);
+
+  return slice.concat(array.slice(0, slice.length - 1));
+};
