@@ -40,3 +40,24 @@ export const convertToVars = (
     };
   }, {} as CSSVarsObject);
 };
+
+export const selectFromArray =
+  <T>(array: T[], callbackFn?: (items: T[]) => void) =>
+  (item: T) => {
+    const newArray = array.indexOf(item) < 0 ? [...array, item] : [...array];
+
+    return callbackFn ? callbackFn(newArray) : newArray;
+  };
+
+export const deselectFromArray =
+  <T>(array: T[], callbackFn?: (items: T[]) => void) =>
+  (item: T) => {
+    const newArray = array.filter((i) => i !== item);
+
+    return callbackFn ? callbackFn(newArray) : newArray;
+  };
+
+export const isSelectedFromArray =
+  <T>(array: T[]) =>
+  (item: T) =>
+    array.indexOf(item) >= 0;

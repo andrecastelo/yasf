@@ -1,6 +1,13 @@
 import { test, expect, assert, describe, it } from 'vitest';
 import { SHARP_NOTES_ONLY } from './semitones';
-import { convertToVars, permutations, wrapAround } from './utils';
+import {
+  convertToVars,
+  deselectFromArray,
+  isSelectedFromArray,
+  permutations,
+  selectFromArray,
+  wrapAround,
+} from './utils';
 
 test('lib/utils/permutations', () => {
   expect(permutations([0, 1])).toEqual([
@@ -69,4 +76,33 @@ test('lib/convertToVars', () => {
     '--rose-800': '#9f1239',
     '--rose-900': '#881337',
   });
+});
+
+test('lib/selectFromArray', () => {
+  const testArray = ['A', 'B', 'C'];
+  const selectFn = selectFromArray(testArray);
+
+  expect(selectFn).toBeTypeOf('function');
+  expect(selectFn('D')).toEqual(['A', 'B', 'C', 'D']);
+  expect(selectFn('C')).toEqual(['A', 'B', 'C']);
+  expect(testArray).toEqual(['A', 'B', 'C']);
+});
+
+test('lib/deselectFromArray', () => {
+  const testArray = ['A', 'B', 'C'];
+  const deselectFn = deselectFromArray(testArray);
+
+  expect(deselectFn).toBeTypeOf('function');
+  expect(deselectFn('D')).toEqual(['A', 'B', 'C']);
+  expect(deselectFn('B')).toEqual(['A', 'C']);
+  expect(testArray).toEqual(['A', 'B', 'C']);
+});
+
+test('lib/isSelectedFromArray', () => {
+  const testArray = ['A', 'B', 'C'];
+  const isSelected = isSelectedFromArray(testArray);
+
+  expect(isSelected).toBeTypeOf('function');
+  expect(isSelected('A')).toBeTruthy();
+  expect(isSelected('D')).toBeFalsy();
 });
