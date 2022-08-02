@@ -18,7 +18,7 @@ export const App = () => {
         styles={{
           ':root': cssVars,
           body: {
-            backgroundColor: 'var(--gray-50)',
+            backgroundColor: 'var(--gray-700)',
             padding: 0,
             margin: 0,
           },
