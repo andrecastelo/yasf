@@ -5,6 +5,7 @@ import {
   notesToPotentialSemitones,
   NoteType,
   chromaticScale,
+  addNote,
 } from './semitones';
 
 test('lib/notesToSemitones', () => {
@@ -51,4 +52,15 @@ test('lib/chromaticScale', () => {
   expect(chromaticScale('D')).toEqual(guitarStrings[2]);
   expect(chromaticScale('G')).toEqual(guitarStrings[3]);
   expect(chromaticScale('B')).toEqual(guitarStrings[4]);
+});
+
+test('lib/addNote', () => {
+  expect(addNote('C', 1)).toEqual('C#');
+  expect(addNote('B', 1)).toEqual('C');
+  expect(addNote('C', -1)).toEqual('B');
+
+  expect(addNote('C', 13)).toEqual('C#');
+  expect(addNote('C', 25)).toEqual('C#');
+  expect(addNote('C', -13)).toEqual('B');
+  expect(addNote('C', -25)).toEqual('B');
 });

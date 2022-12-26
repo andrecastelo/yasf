@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NoteType } from '../lib/semitones';
 import { HighlightedContainer } from '../state/highlightedStateContainer';
 import { SelectedContainer } from '../state/selectedStateContainer';
@@ -22,6 +23,15 @@ export const ScaleStateProvider = ({
 );
 
 export const Scale = () => {
+  const [tuning, setTuning] = useState<string[]>([
+    'E',
+    'A',
+    'D',
+    'G',
+    'B',
+    'E',
+  ]);
+
   return (
     <ScaleStateProvider initialHighlighted={['C', 'A', 'G', 'E', 'D']}>
       <div>

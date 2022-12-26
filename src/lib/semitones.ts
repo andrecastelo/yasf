@@ -61,3 +61,19 @@ export const chromaticScale = (note: NoteType) => {
 
   return scale;
 };
+
+export const addNote = (note: NoteType, _number: number = 1) => {
+  const length = SHARP_NOTES_ONLY.length;
+  const number = _number % length;
+  const sharpNote = convertToSharp(note)[0];
+  const noteIndex = SHARP_NOTES_ONLY.indexOf(sharpNote);
+  let newIndex = noteIndex + number;
+
+  if (newIndex > length - 1) {
+    newIndex = newIndex - length;
+  } else if (newIndex < 0) {
+    newIndex = newIndex + length;
+  }
+
+  return SHARP_NOTES_ONLY[newIndex];
+};
