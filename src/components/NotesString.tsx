@@ -1,6 +1,42 @@
+import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { chromaticScale, NoteType } from '../lib/semitones';
+import AddIcon from '@mui/icons-material/AddRounded';
+import RemoveIcon from '@mui/icons-material/RemoveRounded';
 import { Note } from './Note';
+
+const NoteButton = styled.button`
+  background-color: var(--slate-900);
+  color: var(--slate-300);
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--slate-800);
+    color: var(--slate-200);
+  }
+`;
+
+const RootNoteWrapper = styled.div`
+  border-right: 4px solid var(--slate-50);
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
 
 type NotesStringProps = {
   root: NoteType;
@@ -17,17 +53,15 @@ export const NotesString = ({ root }: NotesStringProps) => (
       margin-bottom: 8px;
     `}
   >
-    <div
-      css={css`
-        border-right: 4px solid var(--slate-50);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-      `}
-    >
+    <RootNoteWrapper>
+      <NoteButton>
+        <RemoveIcon />
+      </NoteButton>
       <Note note={root} />
-    </div>
+      <NoteButton>
+        <AddIcon />
+      </NoteButton>
+    </RootNoteWrapper>
     {chromaticScale(root)
       .slice(1)
       .map((note, index) => (
