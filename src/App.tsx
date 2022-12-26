@@ -1,5 +1,4 @@
-/** @jsxImportSource @emotion/react */
-import { css, Global } from '@emotion/react';
+import { Global } from '@emotion/react';
 import { useMemo } from 'react';
 import { Scale } from './components/Scale';
 import { convertToVars } from './lib/utils';
