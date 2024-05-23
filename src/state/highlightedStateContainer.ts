@@ -1,11 +1,14 @@
-import { NoteType } from '../lib/semitones';
-import { createContainer } from 'unstated-next';
 import { useState } from 'react';
+
+import { createContainer } from 'unstated-next';
+
+import { NoteType } from '@/lib/semitones';
+
 import {
   deselectFromArray,
   isSelectedFromArray,
   selectFromArray,
-} from '../lib/utils';
+} from '@/lib/utils';
 
 const useHighlightedNotes = (initialState: NoteType[] = []) => {
   const [highlightedNotes, setHighlightedNotes] =

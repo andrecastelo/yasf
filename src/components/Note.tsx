@@ -1,8 +1,10 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useContainer } from 'unstated-next';
-import { NoteType } from '../lib/semitones';
-import { HighlightedContainer, SelectedContainer } from '../state';
+
+import { HighlightedContainer, SelectedContainer } from '@/state';
+
+import { NoteType } from '@/lib/semitones';
 
 type StyledNoteProps = {
   border: string;

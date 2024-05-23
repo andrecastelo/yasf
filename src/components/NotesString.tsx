@@ -1,8 +1,9 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { chromaticScale, NoteType } from '../lib/semitones';
+import styled from '@emotion/styled';
 import AddIcon from '@mui/icons-material/AddRounded';
 import RemoveIcon from '@mui/icons-material/RemoveRounded';
+import { NoteType, chromaticScale } from '@/lib/semitones';
+
 import { Note } from './Note';
 
 const NoteButton = styled.button`

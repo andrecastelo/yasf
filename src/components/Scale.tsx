@@ -1,6 +1,7 @@
-import { NoteType } from '../lib/semitones';
-import { HighlightedContainer } from '../state/highlightedStateContainer';
-import { SelectedContainer } from '../state/selectedStateContainer';
+import { NoteType } from '@/lib/semitones';
+import { HighlightedContainer } from '@/state/highlightedStateContainer';
+import { SelectedContainer } from '@/state/selectedStateContainer';
+
 import { NotesString } from './NotesString';
 
 type ScaleStateProviderProps = {
@@ -9,7 +10,7 @@ type ScaleStateProviderProps = {
   initialHighlighted?: NoteType[];
 };
 
-export const ScaleStateProvider = ({
+const ScaleStateProvider = ({
   children,
   initialHighlighted = [],
   initialSelected = [],

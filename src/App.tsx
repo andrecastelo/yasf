@@ -4,9 +4,7 @@ import { Scale } from './components/Scale';
 import { convertToVars } from './lib/utils';
 import { colors } from './theme';
 
-const getCssVariables = () => {
-  return convertToVars(colors);
-};
+const getCssVariables = () => convertToVars(colors);
 
 export const App = () => {
   const cssVars = useMemo(() => getCssVariables(), []);
