@@ -1,4 +1,4 @@
-import { test, expect, assert, describe } from 'vitest';
+import { test, expect } from 'vitest';
 import { convertToSharp } from './convertToSharp';
 
 test('lib/convertToSharp', () => {

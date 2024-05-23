@@ -1,5 +1,4 @@
-import { test, expect, assert, describe, it } from 'vitest';
-import { SHARP_NOTES_ONLY } from './semitones';
+import { test, expect, it } from 'vitest';
 import {
   convertToVars,
   deselectFromArray,

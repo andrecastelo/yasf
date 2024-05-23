@@ -1,4 +1,4 @@
-import { test, expect, assert } from 'vitest';
+import { test, expect } from 'vitest';
 import {
   notesToSemitones,
   semitonesToIntervals,

@@ -9,8 +9,6 @@ export const validNotes = [
 
 export type NoteType = (typeof validNotes)[number];
 
-const isValid = (note: string) => validNotes.indexOf(note as NoteType) >= 0;
-
 // prettier-ignore
 export const SHARP_NOTES_ONLY = [
   'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B',
