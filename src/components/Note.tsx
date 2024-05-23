@@ -48,7 +48,7 @@ const colors = {
 const getColor = (
   colorName: keyof typeof colors,
   selected: boolean,
-  highlighted: boolean
+  highlighted: boolean,
 ) => {
   if (selected) {
     return colors[colorName].selected;

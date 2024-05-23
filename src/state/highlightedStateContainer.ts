@@ -16,11 +16,11 @@ const useHighlightedNotes = (initialState: NoteType[] = []) => {
     setHighlightedNotes,
     highlightNote: selectFromArray<NoteType>(
       highlightedNotes,
-      setHighlightedNotes
+      setHighlightedNotes,
     ),
     unhighlightNote: deselectFromArray<NoteType>(
       highlightedNotes,
-      setHighlightedNotes
+      setHighlightedNotes,
     ),
     isHighlighted: isSelectedFromArray<NoteType>(highlightedNotes),
   };

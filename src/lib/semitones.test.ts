@@ -23,7 +23,7 @@ test('lib/notesToSemitones', () => {
 
 test('lib/semitonesToIntervals', () => {
   expect(
-    semitonesToIntervals([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+    semitonesToIntervals([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]),
   ).toEqual('1P 2m 2M 3m 3M 4P 4A 5P 6m 6M 7m 7M');
 });
 

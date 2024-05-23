@@ -7,7 +7,7 @@ export const validNotes = [
   'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B',
 ] as const;
 
-export type NoteType = typeof validNotes[number];
+export type NoteType = (typeof validNotes)[number];
 
 const isValid = (note: string) => validNotes.indexOf(note as NoteType) >= 0;
 
@@ -19,7 +19,7 @@ export const SHARP_NOTES_ONLY = [
 export const notesToSemitones = (rawScale: string | string[]) => {
   const notes = convertToSharp(rawScale);
   const baseIndex = SHARP_NOTES_ONLY.indexOf(notes[0]);
-  const indexes = notes.map((note) => {
+  const indexes = notes.map(note => {
     const noteIndex = SHARP_NOTES_ONLY.indexOf(note) - baseIndex;
 
     return noteIndex < 0 ? noteIndex + 12 : noteIndex;
@@ -35,9 +35,9 @@ export const semitonesToIntervals = (semitones: number[]): string => {
   ];
 
   return semitones
-    .filter((x) => x < 12)
+    .filter(x => x < 12)
     .sort((a, b) => a - b)
-    .map((semitone) => map[semitone])
+    .map(semitone => map[semitone])
     .join(' ');
 };
 
@@ -54,7 +54,7 @@ export const notesToPotentialSemitones = (rawNotes: string | string[]) => {
 export const chromaticScale = (note: NoteType) => {
   const scale = wrapAround(
     SHARP_NOTES_ONLY,
-    SHARP_NOTES_ONLY.indexOf(note as string)
+    SHARP_NOTES_ONLY.indexOf(note as string),
   ) as NoteType[];
 
   scale.push(note);

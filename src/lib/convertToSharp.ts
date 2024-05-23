@@ -18,7 +18,7 @@ export const convertToSharp = (notes: string | string[]) => {
     Bb: 'A#',
   };
 
-  return noteList.map((note) =>
-    note in noteMap ? noteMap[note as keyof typeof noteMap] : note
+  return noteList.map(note =>
+    note in noteMap ? noteMap[note as keyof typeof noteMap] : note,
   );
 };

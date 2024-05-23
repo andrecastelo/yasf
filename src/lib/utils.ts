@@ -24,7 +24,7 @@ type CSSVarsObject = Record<string, string>;
 
 export const convertToVars = (
   colorObj: ColorObj | Palette,
-  namespace = ''
+  namespace = '',
 ): CSSVarsObject => {
   return Object.entries(colorObj).reduce((acc, [key, value]) => {
     if (typeof value === 'object') {
@@ -52,7 +52,7 @@ export const selectFromArray =
 export const deselectFromArray =
   <T>(array: T[], callbackFn?: (items: T[]) => void) =>
   (item: T) => {
-    const newArray = array.filter((i) => i !== item);
+    const newArray = array.filter(i => i !== item);
 
     return callbackFn ? callbackFn(newArray) : newArray;
   };
