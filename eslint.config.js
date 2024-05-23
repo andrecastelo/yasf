@@ -7,5 +7,13 @@ export default [
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReactConfig,
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ...pluginReactConfig,
+    rules: {
+      ...pluginReactConfig.rules,
+      "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+      'react/react-in-jsx-scope': 'off',
+    },
+  },
 ];
