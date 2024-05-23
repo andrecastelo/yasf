@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --fix .",
-    "prettier": "prettier . --write"
+    "prettier": "prettier --write \"**/**/*.{ts,tsx,js,json,md}\""
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
