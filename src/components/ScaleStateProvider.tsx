@@ -6,11 +6,15 @@ type Action =
   | { type: 'selectNote'; payload: NoteType }
   | { type: 'removeSelectedNote'; payload: NoteType }
   | { type: 'highlightNote'; payload: NoteType }
-  | { type: 'removeHighlightedNote'; payload: NoteType };
+  | { type: 'removeHighlightedNote'; payload: NoteType }
+  | { type: 'setHighlighted'; payload: NoteType[] | string[] }
+  | { type: 'setSelected'; payload: NoteType[] | string[] }
+  | { type: 'setScale'; payload: string };
 
 type Dispatch = (action: Action) => void;
 
 type ScaleContextState = {
+  selectedScale: string;
   highlighted: NoteType[];
   selected: NoteType[];
 };
@@ -25,6 +29,27 @@ const ScaleContext = createContext<
 
 const scaleStateReducer = (state: ScaleContextState, action: Action) => {
   switch (action.type) {
+    case 'setScale': {
+      return {
+        ...state,
+        selectedScale: action.payload,
+      };
+    }
+
+    case 'setHighlighted': {
+      return {
+        ...state,
+        highlighted: action.payload as NoteType[],
+      };
+    }
+
+    case 'setSelected': {
+      return {
+        ...state,
+        selected: action.payload as NoteType[],
+      };
+    }
+
     case 'highlightNote': {
       return {
         ...state,
@@ -65,16 +90,19 @@ const scaleStateReducer = (state: ScaleContextState, action: Action) => {
 
 type ScaleStateProviderProps = {
   children: React.ReactNode;
+  initialScale: string;
   initialHighlighted?: NoteType[];
   initialSelected?: NoteType[];
 };
 
 const ScaleStateProvider = ({
   children,
+  initialScale,
   initialSelected,
   initialHighlighted,
 }: ScaleStateProviderProps) => {
   const [state, dispatch] = useReducer(scaleStateReducer, {
+    selectedScale: initialScale,
     selected: initialSelected || [],
     highlighted: initialHighlighted || [],
   });
@@ -94,11 +122,25 @@ const useScaleState = () => {
 
   const { state, dispatch } = context;
 
-  const { highlighted, selected } = state;
+  const { highlighted, selected, selectedScale } = state;
 
   return {
     highlighted,
     selected,
+    selectedScale,
+
+    setSelectedScale(payload: string) {
+      dispatch({ type: 'setScale', payload });
+    },
+
+    setSelected(payload: NoteType[] | string[]) {
+      dispatch({ type: 'setSelected', payload });
+    },
+
+    setHighlighted(payload: NoteType[] | string[]) {
+      dispatch({ type: 'setHighlighted', payload });
+    },
+
     isSelected(note: NoteType) {
       return selected.indexOf(note) >= 0;
     },

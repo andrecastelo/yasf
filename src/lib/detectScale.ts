@@ -11,3 +11,4 @@ export const detectScale = (notes: NoteType[], tonic?: NoteType): string[] => {
     return notes.map(note => detect(uniqueNotes, { tonic: note })).flat();
   }
 };
+
