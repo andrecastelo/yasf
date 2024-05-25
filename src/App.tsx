@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { Global } from '@emotion/react';
 
 import { Fretboard } from './components';
+import { ScaleList } from './components/ScaleList';
 import { ScaleStateProvider } from './components/ScaleStateProvider';
 import { convertToVars } from './lib/utils';
 import { colors } from './theme';
@@ -26,6 +27,7 @@ export const App = () => {
       />
       <ScaleStateProvider>
         <Fretboard />
+        <ScaleList />
       </ScaleStateProvider>
     </div>
   );
