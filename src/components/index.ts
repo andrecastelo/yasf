@@ -1,1 +1,1 @@
-export { Scale } from './Scale';
+export { Fretboard } from './Fretboard';

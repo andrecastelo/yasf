@@ -25,6 +25,7 @@ const StyledNote = styled.div<StyledNoteProps>`
     height: 24px;
     transition: background-color 0.2s ease-in;
     cursor: pointer;
+    user-select: none;
   `}
 `;
 
@@ -74,6 +75,7 @@ export const Note = ({ note }: NoteProps) => {
   const border = getColor('border', selected, highlighted);
   const bgColor = getColor('bgColor', selected, highlighted);
   const color = getColor('color', selected, highlighted);
+
   const onClick = () => {
     if (!selected) {
       selectNote(note);

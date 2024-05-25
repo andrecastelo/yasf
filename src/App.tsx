@@ -1,6 +1,9 @@
-import { Global } from '@emotion/react';
 import { useMemo } from 'react';
-import { Scale } from './components/Scale';
+
+import { Global } from '@emotion/react';
+
+import { Fretboard } from './components';
+import { ScaleStateProvider } from './components/ScaleStateProvider';
 import { convertToVars } from './lib/utils';
 import { colors } from './theme';
 
@@ -15,13 +18,15 @@ export const App = () => {
         styles={{
           ':root': cssVars,
           body: {
-            backgroundColor: 'var(--gray-700)',
+            backgroundColor: 'var(--gray-900)',
             padding: 0,
             margin: 0,
           },
         }}
       />
-      <Scale />
+      <ScaleStateProvider>
+        <Fretboard />
+      </ScaleStateProvider>
     </div>
   );
 };
