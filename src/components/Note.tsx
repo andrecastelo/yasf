@@ -1,10 +1,9 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useContainer } from 'unstated-next';
-
-import { HighlightedContainer, SelectedContainer } from '@/state';
 
 import { NoteType } from '@/lib/semitones';
+
+import { useScaleState } from './ScaleStateProvider';
 
 type StyledNoteProps = {
   border: string;
@@ -66,9 +65,8 @@ type NoteProps = {
 };
 
 export const Note = ({ note }: NoteProps) => {
-  const { isSelected, selectNote, deselectNote } =
-    useContainer(SelectedContainer);
-  const { isHighlighted } = useContainer(HighlightedContainer);
+  const { isSelected, selectNote, deselectNote, isHighlighted } =
+    useScaleState();
 
   const selected = isSelected(note);
   const highlighted = isHighlighted(note);

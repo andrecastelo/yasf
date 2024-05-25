@@ -1,26 +1,5 @@
-import { NoteType } from '@/lib/semitones';
-import { HighlightedContainer } from '@/state/highlightedStateContainer';
-import { SelectedContainer } from '@/state/selectedStateContainer';
-
+import { ScaleStateProvider } from "./ScaleStateProvider";
 import { NotesString } from './NotesString';
-
-type ScaleStateProviderProps = {
-  children: React.ReactNode;
-  initialSelected?: NoteType[];
-  initialHighlighted?: NoteType[];
-};
-
-const ScaleStateProvider = ({
-  children,
-  initialHighlighted = [],
-  initialSelected = [],
-}: ScaleStateProviderProps) => (
-  <SelectedContainer.Provider initialState={initialSelected}>
-    <HighlightedContainer.Provider initialState={initialHighlighted}>
-      {children}
-    </HighlightedContainer.Provider>
-  </SelectedContainer.Provider>
-);
 
 export const Scale = () => {
   return (
